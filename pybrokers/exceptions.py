@@ -2,13 +2,13 @@
 
 
 class BrokerException(Exception):
-    """Wrapper for custom robinhood library exceptions."""
+    """Wrapper for custom library exceptions."""
 
     pass
 
 
 class BrokerValueError(ValueError, BrokerException):
-    """Value Error for the pyrh library."""
+    """Value Error for the library."""
 
 
 class InvalidCacheFile(BrokerException):
@@ -24,7 +24,7 @@ class InvalidOperation(BrokerException):
 
 
 class AuthenticationError(BrokerException):
-    """Error when trying to login to robinhood."""
+    """Error when trying to login."""
 
     pass
 
