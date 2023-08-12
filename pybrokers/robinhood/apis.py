@@ -7,7 +7,8 @@ import requests
 from pybrokers.exceptions import AuthenticationError, BrokerException
 from pybrokers.robinhood.responses import LoginResponse, HeldStocksResponse, HeldStock, HeldOptionsResponse, HeldOption, \
     OptionInfoResponse, OrdersResponse, OrderResponse, StockQuoteResponse, OptionOrdersResponse, OptionOrderResponse
-from pybrokers.robinhood.urls import LOGIN, CHALLENGE, STOCK_POSITIONS, OPTION_INFO, STOCK_QUOTE
+from pybrokers.robinhood.urls import LOGIN, CHALLENGE, STOCK_POSITIONS, OPTION_INFO, STOCK_QUOTE, OPTION_POSITIONS, \
+    ORDERS, OPTION_ORDERS
 
 
 def login(email: str,
@@ -92,7 +93,7 @@ def fetch_held_options(access_token: str) -> HeldOptionsResponse:
         new_held_options = [HeldOption.from_dict(held_option) for held_option in data.get("results", [])]
         options_response.held_options.extend(new_held_options)
 
-    _get_paginated(STOCK_POSITIONS, headers=headers, response_collector=lambda data: _collect_responses(data))
+    _get_paginated(OPTION_POSITIONS, headers=headers, response_collector=lambda data: _collect_responses(data))
     return options_response
 
 
@@ -109,7 +110,7 @@ def fetch_orders(access_token: str) -> OrdersResponse:
         new_order = [OrderResponse.from_dict(order) for order in data.get("results", [])]
         orders_response.orders.extend(new_order)
 
-    _get_paginated(STOCK_POSITIONS, headers=headers, response_collector=lambda data: _collect_responses(data))
+    _get_paginated(ORDERS, headers=headers, response_collector=lambda data: _collect_responses(data))
 
     return orders_response
 
@@ -122,7 +123,7 @@ def fetch_option_orders(access_token: str) -> OptionOrdersResponse:
         new_option_order = [OptionOrderResponse.from_dict(order) for order in data.get("results", [])]
         orders_response.option_orders.extend(new_option_order)
 
-    _get_paginated(STOCK_POSITIONS, headers=headers, response_collector=lambda data: _collect_responses(data))
+    _get_paginated(OPTION_ORDERS, headers=headers, response_collector=lambda data: _collect_responses(data))
 
     return orders_response
 

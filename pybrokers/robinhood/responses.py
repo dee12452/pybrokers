@@ -173,7 +173,6 @@ class OptionInfoResponse:
 @define
 class OrderResponse:
     instrument_id: Optional[str]
-    symbol: Optional[str]
     quantity: Optional[str]
     price: Optional[str]
     average_price: Optional[str]
@@ -183,7 +182,6 @@ class OrderResponse:
     def from_dict(cls, data: Dict[str, Any]):
         return cls(
             instrument_id=data['instrument_id'],
-            symbol=data['symbol'],
             quantity=data['quantity'],
             price=data['price'],
             average_price=data['average_price'],

@@ -9,7 +9,7 @@ CHALLENGE = f"{API_BASE}/challenge/:challenge_id/respond/"
 
 # Account
 STOCK_POSITIONS = f"{API_BASE}/positions/"
-STOCK_QUOTE = f"{API_BASE}/marketdata/quotes/:instrumentId/"
+STOCK_QUOTE = f"{API_BASE}/marketdata/quotes/:instrument_id/"
 OPTION_POSITIONS = f"{API_BASE}/options/positions/"
 OPTION_INFO = f"{API_BASE}/options/instruments/:option_id/"
 ORDERS = f"{API_BASE}/orders/"
