@@ -8,8 +8,8 @@ setup(
     author_email='optionbot@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'yarl',
         'requests',
         'python-dateutil',
+        'attrs'
     ],
 )
