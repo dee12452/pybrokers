@@ -13,9 +13,9 @@ from pybrokers.robinhood.urls import LOGIN, CHALLENGE, STOCK_POSITIONS, OPTION_I
 
 def login(email: str,
           password: str,
-          device_token: Optional[str],
-          challenge_id: Optional[str],
-          mfa: Optional[str]) -> LoginResponse:
+          device_token: Optional[str] = None,
+          challenge_id: Optional[str] = None,
+          mfa: Optional[str] = None) -> LoginResponse:
     payload: Dict[str, Any] = {
         "client_id": "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
         "expires_in": 86400,
